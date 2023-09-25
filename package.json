@@ -1,0 +1,74 @@
+{
+  "name": "jiva-ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.4",
+    "@opennyai/jiva-admin-api": "^0.0.4",
+    "@opennyai/jiva-user-api": "^0.0.4",
+    "@react-pdf/renderer": "^3.1.12",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/file-saver": "^2.0.5",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-speech-recognition": "^3.9.2",
+    "axios": "^1.4.0",
+    "env-cmd": "^10.1.0",
+    "file-saver": "^2.0.5",
+    "react": "18",
+    "react-dom": "^18.2.0",
+    "react-pdf": "^7.1.2",
+    "react-scripts": "5.0.1",
+    "react-speech-recognition": "^3.10.0",
+    "typescript": ">=4.7",
+    "web-vitals": "^2.1.0"
+  },
+  "scripts": {
+    "start:dev": "env-cmd -f .env.development react-scripts start",
+    "start:prod": "env-cmd -f .env.production react-scripts start",
+    "build:dev": "env-cmd -f .env.development react-scripts build",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@storybook/addon-actions": "^7.0.20",
+    "@storybook/addon-essentials": "^7.0.20",
+    "@storybook/addon-links": "^7.0.20",
+    "@storybook/preset-create-react-app": "^7.0.20",
+    "@storybook/react": "6.4.9",
+    "@types/webpack-env": "^1.18.1",
+    "@typescript-eslint/eslint-plugin": ">=6.0.0",
+    "@typescript-eslint/parser": ">=6.0.0",
+    "babel-loader": "8.2.2",
+    "eslint": ">=8.0.0",
+    "eslint-config-xo": "^0.43.1",
+    "eslint-config-xo-typescript": "^1.0.1",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-react": "^7.33.2"
+  }
+}

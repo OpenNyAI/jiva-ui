@@ -1,0 +1,8 @@
+.introduction-jiva-heading {
+    background: linear-gradient(227deg, #E5948E 0%, #7592E3 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
+  

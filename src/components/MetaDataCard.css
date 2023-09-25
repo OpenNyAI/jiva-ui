@@ -1,0 +1,23 @@
+.botMessage-metadataCard-card{
+    min-width: 250;
+    text-align: left;
+    margin-bottom: 24px;
+    border-radius: 12px;
+}
+.botMessage-metadataCard-content{
+    padding: 32px 1px 20px 18px;
+}
+.botMessage-metadataCard-searchIcon{
+    width: 60px;
+}
+.botMessage-metadataCard-metadata{
+    line-height: 20px;
+    margin-top: 24px;
+    flex-grow: 1;
+}
+.botMessage-metadataCard-image{
+    margin-top: 2rem;
+}
+.botMessage-metadataCard-feedback{
+    padding: 0px 1px 0px 18px;
+}

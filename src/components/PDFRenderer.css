@@ -1,0 +1,144 @@
+.rendering-document-area {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu{
+  flex: 1;
+  margin-right: 10px;
+}
+
+.metadata-area {
+  display: flex;
+  color: white;
+  width: 30px;
+  flex: 1;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.metadata-publish-dates{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 23px;
+}
+
+.dateButton {
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: transparent; 
+  color: white;
+}
+
+.metadata-publish-dates li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.metadata-publish-dates li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 27px; 
+  left: 60px;
+  width: 1px;
+  height: calc(100% + 10px);
+  background-color: white;
+}
+
+.rendering-heading {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+
+
+.rendering-name {
+    display: flex;
+    word-wrap: break-word;
+    overflow: auto;
+    color: white;
+    width: 90%;
+    height: 70px;
+    font-family: Urbanist;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.rendering-date {
+  display: flex;
+  height: 22px;
+
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #DFDFDF;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.pdf-frame {
+    width: 890px;
+    height: 90%;
+    overflow: auto;
+    position: relative;
+  }
+
+  .pdf-container {
+    position: relative;
+    height: 100%;
+  }
+
+  .pdf-footer {
+    position: fixed;
+    bottom: 2%;
+    left: 41%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1B1A1A;
+    padding: 10px;
+    z-index: 100;
+    border-radius: 8px;
+  }
+
+  .pdf-footer button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+  }
+
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .searchQuery {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    width: 170px;
+    height: 27px;
+  }

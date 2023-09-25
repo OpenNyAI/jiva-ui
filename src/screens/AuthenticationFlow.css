@@ -1,0 +1,11 @@
+.authentication-flow-jiva-heading {
+    background: linear-gradient(227deg, #E5948E 0%, #7592E3 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
+  .authentication-flow-button {
+    background: linear-gradient(227deg, #E5948E 0%, #7592E3 100%);
+    font-weight: 800;
+  }

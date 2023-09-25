@@ -1,0 +1,70 @@
+.scrollable-text::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+.menu-footer  ul:first-of-type  li:first-child{
+    border-radius: 0rem;
+background: none;
+}
+.menu-document {
+    color: rgba(96, 96, 96, 1);
+}
+
+.menu-document-heading {
+    padding-left: 30px;
+}
+
+.menu-feedback {
+    position: absolute;
+    bottom: 0;
+    padding-left: 30px;
+    padding-bottom: 40px;
+}
+
+.menu-feedback-link {
+    width: 189px;
+    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    text-decoration-line: underline;
+
+    color: #FAFAFA;
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    }
+
+.menu-feedback-info {
+    width: 189px;
+    height: 40px;
+    display: flex;
+    padding-left: 5%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #9E9E9E;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.menu-feedback-img {
+    position: absolute;
+    left: 8.34%;
+    right: 8.33%;
+    top: 8.34%;
+    bottom: 8.33%;
+}

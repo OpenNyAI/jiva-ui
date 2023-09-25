@@ -1,0 +1,48 @@
+.image-container-section {
+    position: relative;
+    height: 16rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .section-image {
+    width: 100%;
+    height: auto;
+    transition: height 0.3s ease;
+  }
+  
+  .image-container-section-expanded .section-image {
+    height: 100%;
+  }
+  
+  .section-load-more-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+.section-section-card{
+    min-width: 40rem;
+    max-width: 100rem;
+    text-align: left;
+    margin-bottom: 24px;
+}
+.section-card-content{
+    padding: 1rem;
+}
+
+.botMessage-documentSearchCard-searchIcon{
+    width: 60px;
+}
+.botMessage-documentSearchCard-metadata{
+    line-height: 20px;
+    margin-top: 24px;
+    flex-grow: 1;
+}
+.botMessage-documentSearchCard-image{
+    margin-top: 2rem;
+}
+.botMessage-documentSearchCard-feedback{
+    padding: 0px 1px 0px 18px;
+}
