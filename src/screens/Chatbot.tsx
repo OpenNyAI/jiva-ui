@@ -159,9 +159,11 @@ const Chatbot: React.FC<ChatBotProps> = ({documentList, handleOpenDocument}) => 
 			if (currentMessages?.length > 0) {
 				setLoadingMessages(false);
 				setMessages(currentMessages);
+				setLatestResponse(currentMessages[currentMessages.length - 1]);
 			} else {
 				setLoadingMessages(false);
 				setMessages([]);
+				setLatestResponse({} as ChatMessageReceived);
 			}
 		}
 	};
@@ -198,6 +200,11 @@ const Chatbot: React.FC<ChatBotProps> = ({documentList, handleOpenDocument}) => 
 			getMessages().catch(error => error as Error);
 		}
 	}, []);
+	useEffect(() => {
+		if (answerContainerRef.current) {
+			answerContainerRef.current.scrollIntoView({behavior: 'smooth'});
+		}
+	}, [latestResponse]);
 	const onStartListening = async () => {
 		try {
 			handleResetTranscript();
@@ -218,12 +225,6 @@ const Chatbot: React.FC<ChatBotProps> = ({documentList, handleOpenDocument}) => 
 	const handleResetTranscript = () => {
 		resetTranscript();
 	};
-
-	useEffect(() => {
-		if (answerContainerRef.current) {
-			answerContainerRef.current.scrollIntoView({behavior: 'smooth'});
-		}
-	}, [latestResponse]);
 
 	const handleAudioInput = (transcript: string) => {
 		setInput(transcript);
