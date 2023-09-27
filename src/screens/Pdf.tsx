@@ -237,7 +237,7 @@ const Pdf: React.FC = () => {
 				</div>
 			</div>
 		</div>
-		: <div style={{backgroundColor: 'red'}}>loading...</div>}</>);
+		: <div>loading...</div>}</>);
 };
 
 export default Pdf;
