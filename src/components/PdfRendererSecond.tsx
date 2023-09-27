@@ -84,7 +84,7 @@ const PDFRendererSecond: React.FC<PdfRendererProps> = ({metadata, pageNo, toc, h
 				<Page
 					pageNumber={pageNumber}
 					customTextRenderer={customTextRenderer}
-					scale={zoom} width={window.innerWidth}
+					scale={zoom} width={window.innerWidth - (zoom! * 100)}
 				/>
 			</Document>
 

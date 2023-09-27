@@ -38,7 +38,7 @@ const Pdf: React.FC = () => {
 	const [actdocInformation, setActdocInformation] = useState<BotDocumentResult>({} as BotDocumentResult);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [toc, setToc] = useState<unknown>([]);
-	const [zoom, setZoom] = useState(0.5);
+	const [zoom, setZoom] = useState(0.4);
 	const onDocumentLoadSuccess = ({numPages}: {numPages: number}) => {
 		setNumPages(numPages);
 	};

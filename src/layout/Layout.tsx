@@ -177,7 +177,7 @@ const Layout: React.FC = () => {
 				userDetails={username}
 				handleLogOut={handleLogOut}/>
 			<Main open={openMenu} ispdfscreen={isRoutePdf}>
-				{isRoutePdf ? null : <DrawerSpace />}
+				<DrawerSpace />
 				<Routes>
 					<Route path='/search' element={<Protected isSignedIn={isAuthenticated}><SearchLayout /></Protected>} />
 					<Route path='/pdf/:id/:page' element={<Protected isSignedIn={isAuthenticated}><Pdf/></Protected>} />
