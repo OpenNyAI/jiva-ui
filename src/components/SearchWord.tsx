@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import {type SearchWordProps} from '../prop-types/PdfProps';
-import {TextField, InputAdornment} from '@mui/material';
+import {TextField, InputAdornment, IconButton} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -34,7 +34,7 @@ const SearchWord: React.FC<SearchWordProps> = ({anchorSearchWord, openSearchWord
 			<div style={{padding: '3px 8px 3px 8px'}}>
 				<TextField id='outlined-basic' InputProps={{
 					startAdornment: <InputAdornment position='start'><SearchIcon sx={{color: 'white'}}/></InputAdornment>,
-					endAdornment: <InputAdornment position='start'><CloseIcon sx={{color: 'white'}}/></InputAdornment>,
+					endAdornment: <InputAdornment position='start'><IconButton onClick={onClose}><CloseIcon sx={{color: 'white'}}/></IconButton></InputAdornment>,
 				}} variant='outlined' size='small' fullWidth value={searchTerm} onChange={handleSearchTerm} onKeyDown={handleSearch} placeholder='find in document'/>
 			</div>
 		</Menu>
