@@ -1,7 +1,7 @@
 import React from 'react';
 import {type BotMessageProps} from '../prop-types/BotMessageProps';
 import DocumentsSearch from './DocumentsSearch';
-import {ResultNotFound, SectionSearchResultIntroduction} from './SearchResultResponses';
+import {DocNotFound, SectionNotFound, SectionSearchResultIntroduction} from './SearchResultResponses';
 import SectionCard from './SectionCard';
 import {type SectionQuery, type DocumentQuery, type DocumentListItem} from '../prop-types/ChatBotProps';
 import {Grid} from '@mui/material';
@@ -9,11 +9,14 @@ import Feedback from '../screens/Feedback';
 
 const BotMessage: React.FC<BotMessageProps> = ({messageId, message, query, handleOpenDocument, feedback}) => (
 	<>
-		{(message as string)?.length > 0 && <ResultNotFound/>}
-		{ ('documentList' in (message as DocumentQuery) && (message as DocumentQuery)?.documentList?.length === 0) && <ResultNotFound/>}
+		{(message as string)?.length > 0 && <DocNotFound/>}
+		{ ('documentList' in (message as DocumentQuery) && (message as DocumentQuery)?.documentList?.length === 0) ? <DocNotFound/>
+			: <>
+				{ ('sectionList' in (message as SectionQuery) && (message as SectionQuery)?.sectionList?.length === 0) && <SectionNotFound/>}
+
+			</>}
 		{(('documentInformation' in (message as DocumentListItem) && (message as DocumentListItem) === undefined && Object.keys(message as DocumentListItem)?.length === 0)
-			|| ('sectionList' in (message as SectionQuery) && ((message as SectionQuery)?.sectionList)?.length === 0)
-		) && <ResultNotFound/>}
+		) && <DocNotFound/>}
 		{'documentInformation' in (message as DocumentListItem) && (message as DocumentListItem) !== undefined && Object.keys(message as DocumentListItem)?.length > 0 && (<>
 			<Grid
 				container

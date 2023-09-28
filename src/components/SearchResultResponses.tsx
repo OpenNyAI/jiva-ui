@@ -56,7 +56,7 @@ export const SectionSearchResultIntroduction: React.FC = () => (
 	</Grid>
 );
 
-export const ResultNotFound: React.FC = () => (
+export const DocNotFound: React.FC = () => (
 	<Grid
 		container
 		direction='row'
@@ -67,6 +67,23 @@ export const ResultNotFound: React.FC = () => (
 		<Grid item xs={5}>
 			<ResponseText>
 			Sorry! I could not find any document with that name.
+			</ResponseText>
+		</Grid>
+		<Grid item xs={8}>
+		</Grid>
+	</Grid>
+);
+export const SectionNotFound: React.FC = () => (
+	<Grid
+		container
+		direction='row'
+		justifyContent='flex-start'
+		alignItems='center'
+		spacing={2}
+	>
+		<Grid item xs={5}>
+			<ResponseText>
+			Sorry! I could not find any such section.
 			</ResponseText>
 		</Grid>
 		<Grid item xs={8}>

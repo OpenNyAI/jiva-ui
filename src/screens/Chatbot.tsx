@@ -277,21 +277,34 @@ const Chatbot: React.FC<ChatBotProps> = ({documentList, handleOpenDocument}) => 
 			const queryResponse = await getQueryResponse(input);
 			const queryDocumentResponse = queryResponse?.items.filter(item => item?.query_item_type === 'document');
 			const querySectionResponse = queryResponse?.items.filter(item => item?.query_item_type === 'section');
-			if (queryDocumentResponse !== undefined && queryDocumentResponse.length > 0) {
-				const actInformationResponse = await getActsInformationForDocQuery(queryDocumentResponse as DocumentResponseItem[], accessToken);
-				const respQuery = (queryDocumentResponse as DocumentResponseItem[])?.map(async docResp => {
+			if (!input?.includes('section')) {
+				if (queryDocumentResponse !== undefined && queryDocumentResponse.length > 0) {
+					const actInformationResponse = await getActsInformationForDocQuery(queryDocumentResponse as DocumentResponseItem[], accessToken);
+					const respQuery = (queryDocumentResponse as DocumentResponseItem[])?.map(async docResp => {
+						await handleMessages({
+							email_id: username,
+							message: JSON.stringify({
+								documentInformation: (docResp)?.metadata,
+								actInformation: actInformationResponse,
+							} as unknown as DocumentListItem),
+							sender: 'bot',
+							query: input,
+							feedback: undefined,
+						});
+					});
+					await Promise.all(respQuery);
+				} else {
 					await handleMessages({
 						email_id: username,
 						message: JSON.stringify({
-							documentInformation: (docResp)?.metadata,
-							actInformation: actInformationResponse,
-						} as unknown as DocumentListItem),
+							documentList: [],
+							actInformation: [],
+						} as unknown as DocumentQuery),
 						sender: 'bot',
 						query: input,
 						feedback: undefined,
 					});
-				});
-				await Promise.all(respQuery);
+				}
 			} else if (querySectionResponse !== undefined && querySectionResponse?.length > 0) {
 				const actInformationResponse = await getActsInformationForSectionQuery(queryDocumentResponse as SectionResponseItem[], accessToken);
 				await handleMessages({
@@ -308,9 +321,9 @@ const Chatbot: React.FC<ChatBotProps> = ({documentList, handleOpenDocument}) => 
 				await handleMessages({
 					email_id: username,
 					message: JSON.stringify({
-						documentList: [],
+						sectionList: [],
 						actInformation: [],
-					} as unknown as DocumentQuery),
+					} as unknown as SectionQuery),
 					sender: 'bot',
 					query: input,
 					feedback: undefined,
