@@ -2,6 +2,7 @@
 import {Grid, styled} from '@mui/material';
 import React from 'react';
 import './Loader.css';
+import LoaderIcon from '../assets/loader.gif';
 const Item = styled('div')(({theme}) => ({
 	backgroundColor: '#222427',
 	...theme.typography.h6,
@@ -22,7 +23,7 @@ const Loader: React.FC = () => (
 	>
 		<Grid item xs={4}>
 			<Item>
-				<img src='./loader.gif'/>
+				<img src={LoaderIcon}/>
 			</Item>
 		</Grid>
 		<Grid item xs={8}>
