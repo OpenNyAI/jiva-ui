@@ -39,6 +39,10 @@ const Menu: React.FC<MenuProps> = ({recentDocuments, handleOpenDocument, handleD
 		navigate(link);
 	};
 
+	const handleNavigateSearch = () => {
+		handleClickItem('/search');
+	};
+
 	const onClick = (documentId: string) => {
 		if (handleOpenDocument !== undefined) {
 			handleOpenDocument(documentId ?? '', 1);
@@ -62,7 +66,7 @@ const Menu: React.FC<MenuProps> = ({recentDocuments, handleOpenDocument, handleD
 			open={openMenu}
 		>
 			<SubMenuHeader>
-				<SubMenuTitle>J I V A _</SubMenuTitle>
+				<SubMenuTitle onClick={handleNavigateSearch} style={{cursor: 'pointer'}}>J I V A _</SubMenuTitle>
 				<div style={{justifyContent: 'flex-end', flex: '1', order: '3'}}>
 					<IconButton onClick={handleDrawerClose} sx={{float: 'right'}}>
 						<ChevronLeftIcon />
