@@ -7,10 +7,10 @@ import {useState, useEffect, useRef} from 'react';
 import './Chatbot.css';
 import Query from '../components/Query';
 import AudioInput from '../components/AudioInput';
-import {type ChatBotProps, type DocumentQuery, type SectionQuery, type ChatMessageSent, type ChatMessageReceived, type ChatMessageExtended, type DocumentListItem} from '../prop-types/ChatBotProps';
+import {type ChatBotProps, type DocumentQuery, type SectionQuery, type GeneralQuery, type ChatMessageSent, type ChatMessageReceived, type ChatMessageExtended, type DocumentListItem} from '../prop-types/ChatBotProps';
 import DocumentAutoComplete from '../components/DocumentAutoComplete';
 import {type Document} from '../prop-types/DocumentAutoCompleteProps';
-import {type DocumentResponseItem, type SectionResponseItem} from '@opennyai/jiva-user-api';
+import {type DocumentResponseItem, type SectionResponseItem, type GeneralResponseItem} from '@opennyai/jiva-user-api';
 import {userService} from '../utilities/Services';
 import {type BotMessageExtendedProps} from '../prop-types/BotMessageProps';
 import Loader from '../components/Loader';
@@ -84,6 +84,27 @@ const getActsInformationForSectionQuery = async (responses: SectionResponseItem[
 		);
 		const actInformationResponses = await Promise.all(actInfoPromises);
 		return actInformationResponses;
+	} catch (error) {
+	}
+};
+
+const getGeneralInformationForGeneralQuery = async (responses: GeneralResponseItem[], accessToken: string) => {
+	try {
+		const responseItems = responses;
+		const generalInfoPromises = responseItems?.map(
+			async (response: GeneralResponseItem) => {
+				let key;
+				let result;
+				if (response?.query_item_type === 'general' && response?.result !== undefined) {
+					result = response.result;
+					key = `general-${result}`;
+				}
+
+				return {id: key, response: result};
+			},
+		);
+		const generalInformationResponses = await Promise.all(generalInfoPromises);
+		return generalInformationResponses;
 	} catch (error) {
 	}
 };
@@ -277,34 +298,22 @@ const Chatbot: React.FC<ChatBotProps> = ({documentList, handleOpenDocument}) => 
 			const queryResponse = await getQueryResponse(input);
 			const queryDocumentResponse = queryResponse?.items.filter(item => item?.query_item_type === 'document');
 			const querySectionResponse = queryResponse?.items.filter(item => item?.query_item_type === 'section');
-			if (!input?.includes('section')) {
-				if (queryDocumentResponse !== undefined && queryDocumentResponse.length > 0) {
-					const actInformationResponse = await getActsInformationForDocQuery(queryDocumentResponse as DocumentResponseItem[], accessToken);
-					const respQuery = (queryDocumentResponse as DocumentResponseItem[])?.map(async docResp => {
-						await handleMessages({
-							email_id: username,
-							message: JSON.stringify({
-								documentInformation: (docResp)?.metadata,
-								actInformation: actInformationResponse,
-							} as unknown as DocumentListItem),
-							sender: 'bot',
-							query: input,
-							feedback: undefined,
-						});
-					});
-					await Promise.all(respQuery);
-				} else {
+			const generalResponse = queryResponse?.items.filter(item => item?.query_item_type === 'general');
+			if (queryDocumentResponse !== undefined && queryDocumentResponse.length > 0) {
+				const actInformationResponse = await getActsInformationForDocQuery(queryDocumentResponse as DocumentResponseItem[], accessToken);
+				const respQuery = (queryDocumentResponse as DocumentResponseItem[])?.map(async docResp => {
 					await handleMessages({
 						email_id: username,
 						message: JSON.stringify({
-							documentList: [],
-							actInformation: [],
-						} as unknown as DocumentQuery),
+							documentInformation: (docResp)?.metadata,
+							actInformation: actInformationResponse,
+						} as unknown as DocumentListItem),
 						sender: 'bot',
 						query: input,
 						feedback: undefined,
 					});
-				}
+				});
+				await Promise.all(respQuery);
 			} else if (querySectionResponse !== undefined && querySectionResponse?.length > 0) {
 				const actInformationResponse = await getActsInformationForSectionQuery(queryDocumentResponse as SectionResponseItem[], accessToken);
 				await handleMessages({
@@ -317,13 +326,24 @@ const Chatbot: React.FC<ChatBotProps> = ({documentList, handleOpenDocument}) => 
 					query: input,
 					feedback: undefined,
 				});
+			} else if (generalResponse !== undefined && generalResponse?.length > 0) {
+				const generalInformationResponse = await getGeneralInformationForGeneralQuery(generalResponse as GeneralResponseItem[], accessToken);
+				await handleMessages({
+					email_id: username,
+					message: JSON.stringify({
+						result: generalInformationResponse,
+					} as unknown as GeneralQuery),
+					sender: 'bot',
+					query: input,
+					feedback: undefined,
+				});
 			} else {
 				await handleMessages({
 					email_id: username,
 					message: JSON.stringify({
-						sectionList: [],
+						documentList: [],
 						actInformation: [],
-					} as unknown as SectionQuery),
+					} as unknown as DocumentQuery),
 					sender: 'bot',
 					query: input,
 					feedback: undefined,

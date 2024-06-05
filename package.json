@@ -10,7 +10,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.4",
     "@opennyai/jiva-admin-api": "^0.0.4",
-    "@opennyai/jiva-user-api": "^0.0.4",
+    "@opennyai/jiva-user-api": "^0.0.5",
     "@react-pdf/renderer": "^3.1.12",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",

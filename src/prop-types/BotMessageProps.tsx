@@ -1,5 +1,5 @@
 import {type DocumentMetaData, type ActMetaData, type SectionResponseItem} from '@opennyai/jiva-user-api';
-import {type DocumentListItem, type DocumentQuery, type SectionQuery} from './ChatBotProps';
+import {type DocumentListItem, type DocumentQuery, type SectionQuery, type GeneralQuery} from './ChatBotProps';
 
 type IntroductionCardProps = {
 	heading?: string;
@@ -16,7 +16,7 @@ type BotMessageProps = {
 type SectionQueryProps = {
 	sectionInformation: Record<string, unknown>;
 };
-type BotMessageExtendedProps = BotDocumentResult | BotSimpleMessage | DocumentQuery | SectionQuery | string | DocumentListItem;
+type BotMessageExtendedProps = BotDocumentResult | BotSimpleMessage | DocumentQuery | SectionQuery | GeneralQuery | string | DocumentListItem;
 type BotDocumentResult = {
 	actInformation?: ActMetaData;
 	documentInformation: DocumentMetaData;

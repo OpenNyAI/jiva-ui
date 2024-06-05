@@ -2405,10 +2405,10 @@
   resolved "https://registry.yarnpkg.com/@opennyai/jiva-admin-api/-/jiva-admin-api-0.0.4.tgz#c99d6026b9133e28dbe361860ed676ba12bfb879"
   integrity sha512-nLz5GW4gHvS620+7hJEfFqZBEVMewqKKjqdNu8QPg/nlJ1tlH56GvK6Ea2Q3p7eIVEVbfBCMlC4MoOyrDzj7Sg==
 
-"@opennyai/jiva-user-api@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@opennyai/jiva-user-api/-/jiva-user-api-0.0.4.tgz#e0031125e42a25a016538d5c8217d47231077ba3"
-  integrity sha512-k6uryCRAVb/s1GElu6DYNUZJfHZmXQNxSHhiL5V172a36PxB+hEVkB57CsUvLkrDPPex/OXTdMATRAkff0scMw==
+"@opennyai/jiva-user-api@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@opennyai/jiva-user-api/-/jiva-user-api-0.0.5.tgz#2917577db0afe00792d1f8efc78307666dfe1ebe"
+  integrity sha512-g4nf5JU4/lLeLQAbAJV8Hi6UJNcrV7xP6nTkii4kT2wdb+hzU1h5/UNB4sIBJ6vBrA/rXJStxg+73TV7c0cx2Q==
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"

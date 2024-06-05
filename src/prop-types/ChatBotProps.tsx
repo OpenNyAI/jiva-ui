@@ -47,6 +47,12 @@ type SectionQuery = {
 		response: DocumentMetaData[] | undefined;
 	}>;
 };
+type GeneralQuery = {
+	result: Array<{
+		id: string | undefined;
+		response: string | undefined;
+	}>;
+};
 type DocumentListItem = {
 	documentInformation: DocumentMetaData;
 	actInformation: Array<{
@@ -54,7 +60,7 @@ type DocumentListItem = {
 		response: DocumentMetaData[] | undefined;
 	}> | undefined;
 };
-type ChatMessageExtended = BotDocumentResult | BotSimpleMessage | QueryProps | DocumentQuery | SectionQuery | string | DocumentListItem;
+type ChatMessageExtended = BotDocumentResult | BotSimpleMessage | QueryProps | DocumentQuery | SectionQuery | GeneralQuery | string | DocumentListItem;
 type ChatMessageReceived = {
 	email_id: string;
 	message_id?: string;
@@ -90,4 +96,4 @@ type AudioProps = {
 	isListening: boolean;
 };
 
-export type {ActivityColumn, ActivityTableProps, DailyActivityList, DailyActivityItem, ActivityItem, ChatMessageExtended, ChatBotProps, ChatMessageReceived, ChatMessageSent, DocumentQuery, FeedbackButton, AudioProps, SectionQuery, DocumentListItem};
+export type {ActivityColumn, ActivityTableProps, DailyActivityList, DailyActivityItem, ActivityItem, ChatMessageExtended, ChatBotProps, ChatMessageReceived, ChatMessageSent, DocumentQuery, FeedbackButton, AudioProps, SectionQuery, GeneralQuery, DocumentListItem};

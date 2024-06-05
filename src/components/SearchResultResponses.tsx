@@ -73,6 +73,29 @@ export const DocNotFound: React.FC = () => (
 		</Grid>
 	</Grid>
 );
+
+type GeneralResponseComponentProps = {
+	message_text: string | undefined;
+};
+
+export const GeneralResponseComponent: React.FC<GeneralResponseComponentProps> = ({message_text}) => (
+	<Grid
+		container
+		direction='row'
+		justifyContent='flex-start'
+		alignItems='center'
+		spacing={2}
+	>
+		<Grid item xs={5}>
+			<ResponseText>
+				{message_text}
+			</ResponseText>
+		</Grid>
+		<Grid item xs={8}>
+		</Grid>
+	</Grid>
+);
+
 export const SectionNotFound: React.FC = () => (
 	<Grid
 		container
